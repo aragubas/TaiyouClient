@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:TaiyouClient.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="256" d:DesignHeight="300"
+			 Width="44"
+             x:Class="TaiyouClient.Views.MainAreaViews.GroupsSidebar">
+
+	<UserControl.DataContext>
+		<vm:GroupsSidebarViewModel />
+	</UserControl.DataContext>
+
+	<UserControl.Resources>
+		<x:Double x:Key="ScrollBarSize">3</x:Double>
+	</UserControl.Resources>
+
+	<DockPanel x:Name="RootPanel" Background="{DynamicResource Background_Separation}">
+		<ListBox Height="{Binding Height, Source=RootPanel}" VirtualizationMode="None" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Groups}" Background="Transparent">
+			<ListBox.Styles>
+				<Style Selector="ScrollBar /template/ RepeatButton#PART_LineUpButton, ScrollBar /template/ RepeatButton#PART_LineDownButton">
+					<Setter Property="IsVisible" Value="False" />
+				</Style>
+
+				<Style Selector="ScrollBar:vertical /template/ Thumb.thumb">
+					<Setter Property="RenderTransform" Value="none" />
+				</Style>
+
+				<Style Selector="ScrollBar /template/ Thumb.thumb /template/ Border#ThumbVisual">
+					<Setter Property="CornerRadius" Value="8" />
+					<Setter Property="Transitions" />
+				</Style>
+
+				<Style Selector="ScrollBar:vertical[IsExpanded=True] /template/ Thumb.thumb">
+				</Style>
+
+				<Style Selector="ListBoxItem">
+					<Setter Property="Padding" Value="0" />
+					<Setter Property="Margin" Value="0, 2, 2, 2" />
+				</Style>
+
+				<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+					<Setter Property="Background" Value="Transparent" />
+				</Style>
+
+				<Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+					<Setter Property="Background" Value="Transparent" />
+				</Style>
+
+				<Style Selector="Border.group">
+					<Setter Property="Background" Value="{DynamicResource Background_Control_Default}" />
+					<Setter Property="CornerRadius" Value="24" />
+
+					<Setter Property="Transitions">
+						<Transitions>
+							<CornerRadiusTransition Property="CornerRadius" Easing="QuinticEaseInOut" Duration="0:0:.2" />
+							<BrushTransition Property="Background" Easing="QuinticEaseInOut" Duration="0:0:0.25" />
+						</Transitions>
+					</Setter>
+
+				</Style>
+
+				<Style Selector="ListBoxItem:selected Border.group">
+					<Setter Property="Background" Value="{DynamicResource Background_Control_Active}" />
+					<Setter Property="CornerRadius" Value="4" />
+				</Style>
+
+				<Style Selector="ToolTip">
+					<Setter Property="Padding" Value="4" />
+					<Setter Property="Height" Value="32" />
+					<Setter Property="MinWidth" Value="32" />
+					<Setter Property="BorderThickness" Value="2" />
+					<Setter Property="Background" Value="{DynamicResource Background_Control_Over}" />
+					<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Over_Border}" />
+					<Setter Property="FontSize" Value="14" />
+				</Style>
+
+				<Style Selector="ToolTip TextBlock">
+					<Setter Property="VerticalAlignment" Value="Center" />
+				</Style>
+				
+			</ListBox.Styles>
+
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<Border Width="32" Height="32" Classes="group" Cursor="Hand" ToolTip.Tip="{Binding Name}" ToolTip.ShowDelay="8" ToolTip.Placement="Right" ToolTip.VerticalOffset="0" ToolTip.HorizontalOffset="4" >
+						<TextBlock Text="{Binding Name}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" />
+					</Border>
+				</DataTemplate>				
+			</ListBox.ItemTemplate>
+			
+		</ListBox>
+	</DockPanel>
+  
+</UserControl>

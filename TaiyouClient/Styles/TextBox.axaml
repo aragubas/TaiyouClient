@@ -1,0 +1,42 @@
+<Styles xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<StackPanel Spacing="8">
+				<TextBox Text="The quick brown fox jumps over the lazy dog" />
+				<TextBox Text="Disabled Textbox" IsEnabled="False" />
+
+			</StackPanel>
+		</Border>
+	</Design.PreviewWith>
+	
+	<!-- Textbox inside a form -->
+	<Style Selector="TextBox">
+		<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Normal}" />
+		<Setter Property="Background" Value="{DynamicResource Background_TextBox_Default}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_TextBox_Default_Border}" />
+		<Setter Property="CornerRadius" Value="4" />
+		<Setter Property="BorderThickness" Value="1" />
+	</Style>
+
+	<Style Selector="TextBox:pointerover[IsKeyboardFocusWithin=false] /template/ Border#PART_BorderElement">
+		<Setter Property="Background" Value="{DynamicResource Background_TextBox_Over}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_TextBox_Over_Border}" />
+	</Style>
+
+	<Style Selector="TextBox:focus">
+		<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Bright}" />
+		<Setter Property="Background" Value="{DynamicResource Background_TextBox_Active}" />
+	</Style>
+
+	<Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_TextBox_Active_Border}" />
+	</Style>
+
+	<Style Selector="TextBox:disabled">
+		<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Disabled}" />
+	</Style>
+	
+</Styles>

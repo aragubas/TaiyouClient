@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:TaiyouClient.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaiyouClient.Views.LoginScreen">
+
+	<Design.DataContext>
+		<vm:LoginScreenViewModel />
+	</Design.DataContext>
+
+	<UserControl.DataContext>
+		<vm:LoginScreenViewModel />
+	</UserControl.DataContext>
+	
+	<Grid x:Name="RootGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" UseLayoutRounding="True">
+		<!-- Main Form -->
+		<Border x:Name="LoginFormBorder" Width="250" MaxWidth="250" Classes="form" IsEnabled="{Binding !MessageVisible}" BorderThickness="2" CornerRadius="8" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="12">			
+			<StackPanel>				
+				<TextBlock x:Name="TitleText" TextAlignment="Center" Margin="0, 12" FontWeight="Light" FontSize="28" Text="{Binding TitleText}" />
+
+				<StackPanel Margin="8,16,8,8" Spacing="8">
+					<!-- Email Field -->
+					<StackPanel>
+						<TextBlock Text="Email" />
+						<TextBox x:Name="EmailTextbox" Text="{Binding EmailField}" Classes="form" />
+					</StackPanel>
+
+					<!-- Username Field (Only Visible in RegisterMode) -->
+					<StackPanel IsVisible="{Binding IsRegisterMode}">
+						<TextBlock Text="Username" />
+						<TextBox x:Name="UsernameTextbox" Text="{Binding UsernameField}" MaxLength="32" Classes="form" />
+					</StackPanel>
+
+					<!-- Password Field -->
+					<StackPanel>
+						<TextBlock Text="Password" />
+						<TextBox x:Name="PasswordTextbox" Text="{Binding PasswordField}" Classes="form" FontWeight="Bold" PasswordChar="·" />
+					</StackPanel>
+
+					<!-- Confirm Password Field (Only Visible in Register Mode) -->
+					<StackPanel IsVisible="{Binding IsRegisterMode}">
+						<TextBlock Text="Confirm Password" />
+						<TextBox x:Name="ConfirmPasswordTextbox" Text="{Binding ConfirmPasswordField}" Classes="form" FontWeight="Bold" PasswordChar="·" />
+					</StackPanel>
+
+					<!-- Form Buttons -->
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="4">
+						<Button Command="{Binding LoginButtonClick}" x:Name="SignInButton" Content="{Binding LoginButtonText}" />
+						<Button Command="{Binding RegisterButtonClick}"	x:Name="RegisterButton" Content="Register" />
+					</StackPanel>
+				</StackPanel>
+
+			</StackPanel>
+		</Border>
+
+		<!-- Notification Message -->
+		<Border IsVisible="{Binding MessageVisible}" x:Name="MessageBorder" Classes="messagebox" MinWidth="300" MaxWidth="600" Background="{DynamicResource Background_Separation}" BorderThickness="2" CornerRadius="8" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="12">
+			<StackPanel Spacing="8">
+				<TextBlock Text="{Binding MessageTitle}"
+							TextAlignment="Center"
+							FontWeight="Light"
+							FontSize="18"/>
+
+				<TextBlock Text="{Binding MessageText}" TextWrapping="WrapWithOverflow" IsVisible="{Binding MessageButtonsVisible}" />
+
+				<Button Command="{Binding MessageOkButton}" IsVisible="{Binding MessageButtonsVisible}" HorizontalAlignment="Center">OK</Button>
+			</StackPanel>
+		</Border>
+	</Grid>
+
+</UserControl>

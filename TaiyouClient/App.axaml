@@ -1,0 +1,44 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:TaiyouClient"
+             x:Class="TaiyouClient.App">
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme Mode="Light"/>
+		<StyleInclude Source="/Styles/TextBlock.axaml" />
+		<StyleInclude Source="/Styles/TextBox.axaml" />
+		<StyleInclude Source="/Styles/TaiyouButton.axaml" />
+		<StyleInclude Source="/Styles/FormBorder.axaml" />
+		<StyleInclude Source="/Styles/MessageBox.axaml" />
+    </Application.Styles>
+
+	<Application.Resources>
+		<!-- Foreground Colors -->
+		<SolidColorBrush x:Key="Foreground_Text_Disabled" Color="#FF969696" />
+		<SolidColorBrush x:Key="Foreground_Text_Normal" Color="#FF5A5A5A" />
+		<SolidColorBrush x:Key="Foreground_Text_Bright" Color="#FF212121" />
+		<SolidColorBrush x:Key="Foreground_Text_Brightest" Color="Black" />
+		
+		<SolidColorBrush x:Key="Background_Separation" Color="#FFEEEEEE" />
+		<SolidColorBrush x:Key="Background_SeparationSlightly" Color="#FFF9F9F9" />
+		<SolidColorBrush x:Key="Background_Control_Disabled" Color="#FFEBEBEB" />
+		<SolidColorBrush x:Key="Background_Control_Disabled_Border" Color="#FFE6E6E6" />
+		<SolidColorBrush x:Key="Background_Control_Default" Color="#FFE6E6E6" />
+		<SolidColorBrush x:Key="Background_Control_Default_Border" Color="Gainsboro" />
+		<SolidColorBrush x:Key="Background_Control_Over" Color="#FFE1E1E1" />
+		<SolidColorBrush x:Key="Background_Control_Over_Border" Color="#FFD7D7D7" />
+		<SolidColorBrush x:Key="Background_Control_Active" Color="Gainsboro" />
+		<SolidColorBrush x:Key="Background_Control_Active_Border" Color="#FFCDCDCD" />
+
+		<SolidColorBrush x:Key="Background_TextBox_Default" Color="#FFF5F5F5" />
+		<SolidColorBrush x:Key="Background_TextBox_Default_Border" Color="#FFE9E9E9" />
+		<SolidColorBrush x:Key="Background_TextBox_Over" Color="#FFFAFAFA" />
+		<SolidColorBrush x:Key="Background_TextBox_Over_Border" Color="Gainsboro" />
+		<SolidColorBrush x:Key="Background_TextBox_Active" Color="#FFFEFEFE" />
+		<SolidColorBrush x:Key="Background_TextBox_Active_Border" Color="#FFCDCDCD" />
+	</Application.Resources>
+	
+</Application>

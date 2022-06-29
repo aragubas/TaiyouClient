@@ -1,0 +1,45 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Style Selector="Button">
+		<Setter Property="Background" Value="{DynamicResource Background_Control_Default}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Default_Border}"/>
+		<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Normal}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="CornerRadius" Value="4"/>
+		<Setter Property="Transitions">
+			<Setter.Value>
+				<Transitions>
+					
+				</Transitions>
+			</Setter.Value>
+		</Setter>
+		
+	</Style>
+	
+	<Style Selector="Button:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource Background_Control_Over}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Over_Border}"/>
+	</Style>
+
+	<Style Selector="Button:pressed /template/ ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource Background_Control_Active}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Active_Border}"/>
+	</Style>
+
+	<Style Selector="Button:pressed">
+		<Setter Property="RenderTransform" Value="scale(1)" />
+	</Style>
+
+	<Style Selector="Button:disabled /template/ TextBlock">
+		<Setter Property="Foreground" Value="Red"/>
+	</Style>
+
+
+	<Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource Background_Control_Disabled}"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Disabled_Border}"/>
+	</Style>
+
+
+</Styles>

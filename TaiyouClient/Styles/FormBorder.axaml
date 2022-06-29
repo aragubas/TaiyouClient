@@ -1,0 +1,19 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Add Styles Here -->
+	<Style Selector="Border.form">
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Default_Border}" />
+		<Setter Property="Background" Value="{DynamicResource Background_Control_Default}" />
+	</Style>
+
+	<Style Selector="Border.form:disabled TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Disabled}" />
+	</Style>
+
+	<Style Selector="Border.form:disabled">
+		<Setter Property="BorderBrush" Value="{DynamicResource Background_Control_Disabled_Border}" />
+		<Setter Property="Background" Value="{DynamicResource Background_Control_Disabled}" />
+	</Style>
+</Styles>

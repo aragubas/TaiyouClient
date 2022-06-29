@@ -1,0 +1,12 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!-- Add Styles Here -->
+	<Style Selector="Border.messagebox">
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="BorderBrush" Value="#FFE6E6E6" />
+		<Setter Property="Background" Value="{DynamicResource Background_Separation}" />
+		<Setter Property="BoxShadow" Value="0 0 5 #64000000" />
+	</Style>
+	
+</Styles>

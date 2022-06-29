@@ -1,0 +1,15 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+			<TextBlock Text="The quick brown fox jumps over the lazy dog" />
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+	<Style Selector="TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Normal}" />
+	</Style>
+
+</Styles>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Avalonia.Controls;
+using Newtonsoft.Json;
 using ReactiveUI;
 using SocketIOClient;
 using System;
@@ -15,6 +16,7 @@ namespace TaiyouClient.ViewModels
     public class GroupsSidebarViewModel : ViewModelBase
     {
         public ObservableCollection<BasicGroupInfo> Groups { get; }
+        public string Ceira = "sinas";
 
         void Ws_OnUpdateGroups(SocketIOResponse response)
         {
@@ -58,7 +60,7 @@ namespace TaiyouClient.ViewModels
                 Groups.Add(new BasicGroupInfo() { Name = "Carreta Furacâo", Id = "sdfsjdfoisodif" });
                 Groups.Add(new BasicGroupInfo() { Name = "Carreta Furacâo", Id = "sdfsjdfoisodif" });
 
-                //wsAPI.client?.On("update_groups", Ws_OnUpdateGroups);
+                wsAPI.client?.On("update_groups", Ws_OnUpdateGroups);
             }
 
         }

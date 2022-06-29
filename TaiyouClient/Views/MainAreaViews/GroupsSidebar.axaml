@@ -16,7 +16,7 @@
 	</UserControl.Resources>
 
 	<DockPanel x:Name="RootPanel" Background="{DynamicResource Background_Separation}">
-		<ListBox Height="{Binding Height, Source=RootPanel}" VirtualizationMode="None" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Groups}" Background="Transparent">
+		<ListBox x:Name="GroupsList" SelectionChanged="GroupsList_SelectionChanged" AutoScrollToSelectedItem="False" Height="{Binding Height, Source=RootPanel}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Groups}" Background="Transparent">
 			<ListBox.Styles>
 				<Style Selector="ScrollBar /template/ RepeatButton#PART_LineUpButton, ScrollBar /template/ RepeatButton#PART_LineDownButton">
 					<Setter Property="IsVisible" Value="False" />
@@ -29,9 +29,6 @@
 				<Style Selector="ScrollBar /template/ Thumb.thumb /template/ Border#ThumbVisual">
 					<Setter Property="CornerRadius" Value="8" />
 					<Setter Property="Transitions" />
-				</Style>
-
-				<Style Selector="ScrollBar:vertical[IsExpanded=True] /template/ Thumb.thumb">
 				</Style>
 
 				<Style Selector="ListBoxItem">
@@ -83,7 +80,7 @@
 
 			<ListBox.ItemTemplate>
 				<DataTemplate>
-					<Border Width="32" Height="32" Classes="group" Cursor="Hand" ToolTip.Tip="{Binding Name}" ToolTip.ShowDelay="8" ToolTip.Placement="Right" ToolTip.VerticalOffset="0" ToolTip.HorizontalOffset="4" >
+					<Border Width="32" Height="32" Classes="group" Cursor="Hand" ToolTip.Tip="{Binding Name}" ToolTip.ShowDelay="8" ToolTip.Placement="Right" ToolTip.VerticalOffset="0" ToolTip.HorizontalOffset="6" >
 						<TextBlock Text="{Binding Name}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					</Border>
 				</DataTemplate>				

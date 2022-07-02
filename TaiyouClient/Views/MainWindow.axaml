@@ -9,14 +9,22 @@
         MinHeight="450"
 		Width="800"
 		Height="450"
+		Padding="1"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaChromeHints="Default"
+		ExtendClientAreaTitleBarHeightHint="24"
 		WindowStartupLocation="CenterScreen"
         x:Class="TaiyouClient.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Content="{Binding CurrentContent}"
 		Title="TaiyouClient">
 
 	<Window.DataContext>
 		<vm:MainWindowViewModel/>
 	</Window.DataContext>
+
+	<DockPanel>
+		<views:TopBar DockPanel.Dock="Top"></views:TopBar>
+		<ContentPresenter Content="{Binding CurrentContent}" />
+	</DockPanel>
 	
 </Window>

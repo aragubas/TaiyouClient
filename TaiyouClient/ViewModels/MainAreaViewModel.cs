@@ -6,6 +6,7 @@ namespace TaiyouClient.ViewModels
 {
     public class MainAreaViewModel : ViewModelBase
     {
+        public static MainAreaViewModel Instance;
         Control _currentContent;
 
         public Control CurrentContent
@@ -14,9 +15,11 @@ namespace TaiyouClient.ViewModels
             set => this.RaiseAndSetIfChanged(ref _currentContent, value);
         }
 
+
+
         public MainAreaViewModel()
         {
-
+            Instance = this;
         }
 
     }

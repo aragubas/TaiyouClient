@@ -2,7 +2,7 @@
 
 namespace TaiyouClient.Models.Response
 {
-    public struct GetGroupResponse
+    public struct GetGroupsResponse
     {
         [JsonProperty("groups")]
         public BasicGroupInfo[] Groups;

@@ -13,11 +13,15 @@ namespace TaiyouClient.Models.ConfigFile
         [JsonProperty("username")]
         public string Username;
 
+        [JsonProperty("full_name")]
+        public string FullName;
+
         public CurrentUserModel(string AccessToken, string UserID, string Username)
         {
             this.AccessToken = AccessToken;
             this.UserID = UserID;
             this.Username = Username;
+            this.FullName = "";
         }
     }
 }

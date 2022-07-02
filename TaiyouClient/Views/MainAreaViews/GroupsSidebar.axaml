@@ -11,12 +11,8 @@
 		<vm:GroupsSidebarViewModel />
 	</UserControl.DataContext>
 
-	<UserControl.Resources>
-		<x:Double x:Key="ScrollBarSize">3</x:Double>
-	</UserControl.Resources>
-
-	<DockPanel x:Name="RootPanel" Background="{DynamicResource Background_Separation}">
-		<ListBox x:Name="GroupsList" SelectionChanged="GroupsList_SelectionChanged" AutoScrollToSelectedItem="False" Height="{Binding Height, Source=RootPanel}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Groups}" Background="Transparent">
+	<DockPanel Name="RootPanel" Background="{DynamicResource Background_Separation}">
+		<ListBox Name="GroupsList" SelectionChanged="GroupsList_SelectionChanged" AutoScrollToSelectedItem="False" Height="{Binding Height, Source=RootPanel}" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Groups}" Background="Transparent">
 			<ListBox.Styles>
 				<Style Selector="ScrollBar /template/ RepeatButton#PART_LineUpButton, ScrollBar /template/ RepeatButton#PART_LineDownButton">
 					<Setter Property="IsVisible" Value="False" />
@@ -54,7 +50,6 @@
 							<BrushTransition Property="Background" Easing="QuinticEaseInOut" Duration="0:0:0.25" />
 						</Transitions>
 					</Setter>
-
 				</Style>
 
 				<Style Selector="ListBoxItem:selected Border.group">
@@ -75,6 +70,12 @@
 				<Style Selector="ToolTip TextBlock">
 					<Setter Property="VerticalAlignment" Value="Center" />
 				</Style>
+
+				<!--
+				<Style Selector="ToolTip Border">
+					<Setter Property="BoxShadow" Value="0 5 5 10 Red" />
+				</Style>
+				-->
 				
 			</ListBox.Styles>
 

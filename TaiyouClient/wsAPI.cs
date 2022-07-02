@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using SocketIOClient;
+using TaiyouClient.Models.Ws;
 
 namespace TaiyouClient
 {
@@ -43,7 +45,20 @@ namespace TaiyouClient
         static void Client_AuthSuccess(SocketIOResponse response)
         {
             Console.WriteLine("Authenticated Successfully!");
+
+            GetMeResponse getMe = JsonConvert.DeserializeObject<GetMeResponse>(response.GetValue().GetRawText());
+
+            // Check if the stored user needs to be updated
+            if (API.CurrentUser.Username != getMe.Username || API.CurrentUser.UserID != getMe.Id || API.CurrentUser.FullName != getMe.FullName)
+            {
+                API.CurrentUser.Username = getMe.Username;
+                API.CurrentUser.FullName = getMe.FullName;
+                API.CurrentUser.UserID = getMe.Id;
+                API.UpdateStoredUser();
+            }
+
             ConnectChangeEvent?.Invoke(true);
+
 
         }
 

@@ -12,12 +12,6 @@ namespace TaiyouClient
         public static readonly HttpClient client = new();
         public static CurrentUserModel CurrentUser = new("", "", "");
 
-        // 🗣💥
-        public static string EnceirarJson(string Input)
-        {
-            return Input.Remove(0, 1).Remove(Input.Length - 2, 1);
-        }
-
         public static void UpdateStoredUser()
         {
             string fileContent = JsonConvert.SerializeObject(CurrentUser);
@@ -26,6 +20,7 @@ namespace TaiyouClient
             Directory.CreateDirectory(path);
 
             File.WriteAllText(Path.Combine(path, "credentials.json"), fileContent);
+            Console.WriteLine("[UserCredentialsStore] Stored user has been updated.");
         }
 
         public static bool LoadStoredUser()

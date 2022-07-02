@@ -15,7 +15,14 @@ namespace TaiyouClient.Views.MainAreaViews
 
         private void GroupsList_SelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
+            int index = (sender as ListBox).SelectedIndex;
 
+            if (MainAreaViewModel.Instance != null)
+            {
+                Console.WriteLine((DataContext as GroupsSidebarViewModel).Groups[index]);
+
+                MainAreaViewModel.Instance.CurrentContent = new GroupView();
+            }
         }
 
         private void InitializeComponent()

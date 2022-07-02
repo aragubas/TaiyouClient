@@ -16,6 +16,8 @@
     </Application.Styles>
 
 	<Application.Resources>
+		<x:Double x:Key="ScrollBarSize">3</x:Double>
+
 		<!-- Foreground Colors -->
 		<SolidColorBrush x:Key="Foreground_Text_Disabled" Color="#FF969696" />
 		<SolidColorBrush x:Key="Foreground_Text_Normal" Color="#FF5A5A5A" />

@@ -3,23 +3,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:svg="clr-namespace:Avalonia.Svg;assembly=Avalonia.Svg"
+			 xmlns:vm="using:TaiyouClient.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="TaiyouClient.Views.MainAreaViews.GroupView">
-	
-	<DockPanel>
-		<StackPanel MinWidth="128" DockPanel.Dock="Left" Background="{DynamicResource Background_SeparationSlightly}">
-			<Rectangle Height="72" Fill="#ffafafaf" />
 
-			<StackPanel Background="{DynamicResource Background_Separation}">
-				<TextBlock Padding="4" Text="Group Name" HorizontalAlignment="Center" />
-				
+	<UserControl.DataContext>
+		<vm:GroupViewViewModel />
+	</UserControl.DataContext>
+
+	<DockPanel>
+		<DockPanel MinWidth="150" MaxWidth="150" DockPanel.Dock="Left" Background="{DynamicResource Background_SeparationSlightly}">
+
+			<StackPanel DockPanel.Dock="Top" Background="{DynamicResource Background_Separation}">
+				<Rectangle Height="84" Fill="#ffafafaf" />
+				<TextBlock Padding="4" Text="{Binding Name}" HorizontalAlignment="Center" />
+
 				<StackPanel Orientation="Horizontal" Spacing="2">
 					<svg:Svg Width="18" Height="16" Path="/Assets/user.svg" />
-					<TextBlock Text="0" />
+					<TextBlock Foreground="{DynamicResource Foreground_Text_Disabled}" Padding="0, 4, 0, 4" Text="{Binding MembersCount}" />
 				</StackPanel>
 			</StackPanel>
 
-			<ListBox x:Name="ChannelsListbox">
+			<ListBox x:Name="ChannelsListbox" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Channels}">
 				<ListBox.Styles>
 					<Style Selector="ScrollBar /template/ RepeatButton#PART_LineUpButton, ScrollBar /template/ RepeatButton#PART_LineDownButton">
 						<Setter Property="IsVisible" Value="False" />
@@ -33,10 +38,40 @@
 						<Setter Property="CornerRadius" Value="8" />
 						<Setter Property="Transitions" />
 					</Style>
+
+					<Style Selector="ListBoxItem">
+						<Setter Property="Padding" Value="4" />
+					</Style>
+
+					<Style Selector="ListBoxItem TextBlock">
+						<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Normal}" />
+					</Style>
+
+					<Style Selector="ListBoxItem:selected TextBlock">
+						<Setter Property="Foreground" Value="{DynamicResource Foreground_Text_Bright}" />
+					</Style>
+
+					<Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="{DynamicResource Background_Control_Over}" />
+					</Style>
+
+					<Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+						<Setter Property="Background" Value="{DynamicResource Background_Control_Active}" />
+					</Style>
+
 				</ListBox.Styles>
+
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<Border Classes="group" Cursor="Hand" ToolTip.Tip="{Binding Name}">
+							<TextBlock Text="{Binding Name}" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" />
+						</Border>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+
 			</ListBox>
 			
-		</StackPanel>
+		</DockPanel>
 		
 		<ContentPresenter />
 	</DockPanel>

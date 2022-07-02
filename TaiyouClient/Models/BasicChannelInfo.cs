@@ -8,6 +8,6 @@ namespace TaiyouClient.Models
         public string Id { get; set; }
 
         [JsonProperty("channelName")]
-        public string ChannelName { get; set; }
+        public string Name { get; set; }
     }
 }

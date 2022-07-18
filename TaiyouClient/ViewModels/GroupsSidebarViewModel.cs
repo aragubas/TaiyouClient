@@ -39,23 +39,7 @@ namespace TaiyouClient.ViewModels
                 //wsAPI.ConnectChangeEvent += ConnectChange;
 
                 // Shows example data if in debug mode
-#if DEBUG
-                Groups.Add(new BasicGroupInfo() { Name = "Ceira", Id = "sdkfpasdkfasdf" });
-                Groups.Add(new BasicGroupInfo() { Name = "Sinas", Id = "asdfjkaewqkjdw" });
-                Groups.Add(new BasicGroupInfo() { Name = "Caldo de Pilha", Id = "sdfsodifjosidj" });
-                Groups.Add(new BasicGroupInfo() { Name = "Sinas Express", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "sfgsdfsadf", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "234rwfsdg", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "cbvasrgdfg", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "wertsdfgdgsd", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "dghsdfgasdgfg", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "sdfwfsdf", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "fghjdfhdrth", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "asdsdfewr", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "xzcvdfgvdg", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "hrhfghfgh", Id = "sdfsjdfoisodif" });
-                Groups.Add(new BasicGroupInfo() { Name = "ewer2345rwer", Id = "sdfsjdfoisodif" });
-#endif
+                Groups.Add(new BasicGroupInfo() { Name = "Ceira", Id = "test" });
 
                 wsAPI.client?.On("update_groups", Ws_OnUpdateGroups);
             }

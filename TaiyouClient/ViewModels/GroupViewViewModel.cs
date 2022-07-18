@@ -12,7 +12,7 @@ namespace TaiyouClient.ViewModels
 {
     public class GroupViewViewModel : ViewModelBase
     {
-        ObservableCollection<BasicChannelInfo> Channels { get; }
+        public ObservableCollection<BasicChannelInfo> Channels { get; }
 
         int _membersCount = 0;
         public int MembersCount
@@ -46,7 +46,6 @@ namespace TaiyouClient.ViewModels
         {
             MembersCount = groupInfo.MembersCount;
             Name = groupInfo.Name;
-            Id = groupInfo.Id;
 
             Channels.Clear();
             foreach (BasicChannelInfo channel in groupInfo.Channels)
@@ -57,25 +56,24 @@ namespace TaiyouClient.ViewModels
             IsLoading = false;
         }
 
+        void WsUpdateGroup(SocketIOResponse response)
+        {
+            GetGroupInfoResponse groupsResponse = JsonConvert.DeserializeObject<GetGroupInfoResponse>(response.GetValue().GetRawText());
+            LoadGroupData(groupsResponse);
+        }
+
         public async void LoadGroup(string GroupId)
         {
             Channels?.Clear();
             IsLoading = true;
-
             _id = GroupId;
-            Console.WriteLine($"Load Group \"{GroupId}\"");
 
             if (wsAPI.client != null && wsAPI.client.Connected)
             {
                 Channels?.Clear();
                 await wsAPI.client.EmitAsync("get_group_info", JsonConvert.SerializeObject(new GetGroupInfo(GroupId)));
 
-                wsAPI.client.On($"update_group:{GroupId}", (SocketIOResponse response) =>
-                {
-                    GetGroupInfoResponse groupsResponse = JsonConvert.DeserializeObject<GetGroupInfoResponse>(response.GetValue().GetRawText());
-                    LoadGroupData(groupsResponse);
-                });
-
+                wsAPI.client.On($"update_group:{GroupId}", WsUpdateGroup);
             }
 
         }
@@ -86,24 +84,24 @@ namespace TaiyouClient.ViewModels
             {
                 Channels = new ObservableCollection<BasicChannelInfo>();
 
-                //Adds test data in debug environment
-#if DEBUG
-                Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Caldo_de_Pilha", Id = "sadfawgtaergasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
-                Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
-                Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Caldo_de_Pilha", Id = "sadfawgtaergasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
-                Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
-                Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Caldo_de_Pilha", Id = "sadfawgtaergasdf" });
-                Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
-                Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
-#endif
+                //                //Adds test data in debug environment
+                //#if DEBUG
+                //                Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Caldo_de_Pilha", Id = "sadfawgtaergasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Caldo_de_Pilha", Id = "sadfawgtaergasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Caldo_de_Pilha", Id = "sadfawgtaergasdf" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
+                //                Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
+                //#endif
 
 
             }

@@ -15,7 +15,6 @@
 		<DockPanel Width="150" MaxWidth="150" DockPanel.Dock="Left" Background="{DynamicResource Background_SeparationSlightly}">
 
 			<StackPanel DockPanel.Dock="Top" Background="{DynamicResource Background_Separation}">
-				
 				<ProgressBar CornerRadius="0" RenderTransformOrigin="0, 0" MinWidth="150" MinHeight="0" IsEnabled="{Binding IsLoading}" IsIndeterminate="True">
 					<ProgressBar.Transitions>
 						<Transitions>
@@ -47,7 +46,7 @@
 				</StackPanel>
 			</StackPanel>
  
-			<ListBox x:Name="ChannelsListbox" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Channels}">
+			<ListBox Name="ChannelsListbox" SelectionChanged="ChannelsListbox_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Channels}">
 				<ListBox.Styles>
 					<Style Selector="ScrollBar /template/ RepeatButton#PART_LineUpButton, ScrollBar /template/ RepeatButton#PART_LineDownButton">
 						<Setter Property="IsVisible" Value="False" />

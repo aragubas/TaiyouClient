@@ -22,8 +22,8 @@ namespace TaiyouClient.Views
             {
                 if (state == WindowState.Maximized)
                 {
-                    hostWindow.Padding = new Thickness(7, 7, 7, 7);
-                } 
+                    hostWindow.Padding = new Thickness(8, 8, 8, 8);
+                }
                 else
                 {
                     hostWindow.Padding = new Thickness(1, 1, 1, 1);

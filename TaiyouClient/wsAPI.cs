@@ -19,6 +19,7 @@ namespace TaiyouClient
             SocketIOOptions options = new();
             options.ExtraHeaders = new Dictionary<string, string>();
             options.ExtraHeaders.Add("x-auth-token", API.CurrentUser.AccessToken);
+            options.ReconnectionAttempts = 4;
 
             client = new SocketIO("ws://localhost:3313", options);
             client.OnConnected += Client_OnConnected;

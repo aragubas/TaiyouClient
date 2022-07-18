@@ -8,10 +8,10 @@
              x:Class="TaiyouClient.Views.TopBar">
 
 	<StackPanel Background="{DynamicResource Background_SeparationSlightly}" Orientation="Horizontal" IsHitTestVisible="False">
-		<StackPanel Background="{DynamicResource Background_Separation}" Orientation="Horizontal" MaxWidth="125">
+		<StackPanel Background="{DynamicResource Background_Separation}" Orientation="Horizontal">
 			<svg:Svg Width="20" Height="20" Path="/Assets/settings.svg" Margin="4, 0, 4, 0" />
 	
-			<StackPanel Name="UserAreaWidget" Orientation="Horizontal" Margin="0, 0, 4, 0" IsVisible="{Binding ConnectedUser_IsConnected}">
+			<StackPanel Spacing="2" Name="UserAreaWidget" Orientation="Horizontal" Margin="0, 0, 4, 0" IsVisible="{Binding ConnectedUser_IsConnected}">
 				<svg:Svg Width="20" Height="20" Path="/Assets/user.svg" />
 				<TextBlock VerticalAlignment="Center" Text="{Binding ConnectedUser_Username}" />
 			</StackPanel>

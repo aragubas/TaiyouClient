@@ -4,6 +4,9 @@ using ReactiveUI;
 using System.Collections.ObjectModel;
 using TaiyouClient.Models;
 using TaiyouClient.Models.Ws;
+using SocketIOClient;
+using TaiyouClient.Models.Request.Ws;
+using Newtonsoft.Json;
 
 namespace TaiyouClient.ViewModels
 {
@@ -11,14 +14,14 @@ namespace TaiyouClient.ViewModels
     {
         ObservableCollection<BasicChannelInfo> Channels { get; }
 
-        int _membersCount = 666;
+        int _membersCount = 0;
         public int MembersCount
         {
             get => _membersCount;
             set => this.RaiseAndSetIfChanged(ref _membersCount, value);
         }
 
-        string _name = "Unnamed Group";
+        string _name = "Loading...";
         public string Name
         {
             get => _name;
@@ -32,7 +35,14 @@ namespace TaiyouClient.ViewModels
             set => this.RaiseAndSetIfChanged(ref _id, value);
         }
 
-        public void LoadGroupData(GetGroupInfoResponse groupInfo)
+        bool _isLoading = true;
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => this.RaiseAndSetIfChanged(ref _isLoading, value);
+        }
+
+        void LoadGroupData(GetGroupInfoResponse groupInfo)
         {
             MembersCount = groupInfo.MembersCount;
             Name = groupInfo.Name;
@@ -43,6 +53,31 @@ namespace TaiyouClient.ViewModels
             {
                 Channels.Add(channel);
             }
+
+            IsLoading = false;
+        }
+
+        public async void LoadGroup(string GroupId)
+        {
+            Channels?.Clear();
+            IsLoading = true;
+
+            _id = GroupId;
+            Console.WriteLine($"Load Group \"{GroupId}\"");
+
+            if (wsAPI.client != null && wsAPI.client.Connected)
+            {
+                Channels?.Clear();
+                await wsAPI.client.EmitAsync("get_group_info", JsonConvert.SerializeObject(new GetGroupInfo(GroupId)));
+
+                wsAPI.client.On($"update_group:{GroupId}", (SocketIOResponse response) =>
+                {
+                    GetGroupInfoResponse groupsResponse = JsonConvert.DeserializeObject<GetGroupInfoResponse>(response.GetValue().GetRawText());
+                    LoadGroupData(groupsResponse);
+                });
+
+            }
+
         }
 
         public GroupViewViewModel()
@@ -51,7 +86,7 @@ namespace TaiyouClient.ViewModels
             {
                 Channels = new ObservableCollection<BasicChannelInfo>();
 
-                // Adds test data in debug environment
+                //Adds test data in debug environment
 #if DEBUG
                 Channels.Add(new BasicChannelInfo() { Name = "Sinas", Id = "sdfjaosdifasdf" });
                 Channels.Add(new BasicChannelInfo() { Name = "Ceira", Id = "asdfasdfasdfasdf" });
@@ -69,6 +104,7 @@ namespace TaiyouClient.ViewModels
                 Channels.Add(new BasicChannelInfo() { Name = "Nuerbas", Id = "fgasdfwawerawef" });
                 Channels.Add(new BasicChannelInfo() { Name = "Catrelas", Id = "sgasfeawefawe" });
 #endif
+
 
             }
         }

@@ -24,6 +24,7 @@ namespace TaiyouClient
         }
 
         #region ConnectedUser Properties
+        // Username Property
         string _connectedUser_Username = "@unnamed";
         public string ConnectedUser_Username
         {
@@ -31,6 +32,7 @@ namespace TaiyouClient
             set => this.RaiseAndSetIfChanged(ref _connectedUser_Username, value);
         }
 
+        // IsConnected Property
         bool _connectedUser_IsConnected = true;
         public bool ConnectedUser_IsConnected
         {

@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using System;
+using TaiyouClient.Models;
 using TaiyouClient.ViewModels;
 
 namespace TaiyouClient.Views.MainAreaViews
@@ -17,11 +18,12 @@ namespace TaiyouClient.Views.MainAreaViews
         {
             int index = (sender as ListBox).SelectedIndex;
 
-            if (MainAreaViewModel.Instance != null)
+            if (MainAreaViewModel.Instance != null && DataContext != null)
             {
-                Console.WriteLine((DataContext as GroupsSidebarViewModel).Groups[index]);
+                GroupView groupView = new GroupView();
+                MainAreaViewModel.Instance.CurrentContent = groupView;
+                (groupView.DataContext as GroupViewViewModel).LoadGroup((DataContext as GroupsSidebarViewModel).Groups[index].Id);
 
-                MainAreaViewModel.Instance.CurrentContent = new GroupView();
             }
         }
 

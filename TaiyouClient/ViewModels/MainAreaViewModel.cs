@@ -7,8 +7,8 @@ namespace TaiyouClient.ViewModels
     public class MainAreaViewModel : ViewModelBase
     {
         public static MainAreaViewModel Instance;
-        Control _currentContent;
 
+        Control _currentContent;
         public Control CurrentContent
         {
             get => _currentContent;

@@ -45,7 +45,7 @@
 					<TextBlock Foreground="{DynamicResource Foreground_Text_Disabled}" Padding="0, 4, 0, 4" Text="{Binding MembersCount}" />
 				</StackPanel>
 			</StackPanel>
- 
+
 			<ListBox Name="ChannelsListbox" SelectionChanged="ChannelsListbox_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="AlwaysSelected" Items="{Binding Channels}">
 				<ListBox.Styles>
 					<Style Selector="ScrollBar /template/ RepeatButton#PART_LineUpButton, ScrollBar /template/ RepeatButton#PART_LineDownButton">
@@ -96,7 +96,7 @@
 			
 		</DockPanel>
 		
-		<ContentPresenter />
+		<ContentPresenter Content="{Binding CurrentContent}" />
 	</DockPanel>
 	
 </UserControl>

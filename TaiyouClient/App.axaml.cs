@@ -15,12 +15,10 @@ namespace TaiyouClient
 
         public override void OnFrameworkInitializationCompleted()
         {
+            // ViewModel is already defined in XAML, so this method only creates the window
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainWindowViewModel(),
-                };
+                desktop.MainWindow = new MainWindow();
             }
 
             base.OnFrameworkInitializationCompleted();

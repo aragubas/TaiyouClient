@@ -24,8 +24,11 @@ namespace TaiyouClient.Views.MainAreaViews
             if (DataContext != null)
             {
                 //ChannelView channelView = new ChannelView();
+                string ChannelID = (DataContext as GroupViewViewModel).Channels[index].Id;
 
-                Console.WriteLine((DataContext as GroupViewViewModel).Channels[index].Name);
+                Console.WriteLine(ChannelID);
+                
+                
 
                 //(channelView.DataContext as ChannelViewViewModel).LoadGroup((DataContext as GroupsSidebarViewModel).Groups[index].Id);
 

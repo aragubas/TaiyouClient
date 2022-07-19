@@ -7,12 +7,20 @@ using TaiyouClient.Models.Ws;
 using SocketIOClient;
 using TaiyouClient.Models.Request.Ws;
 using Newtonsoft.Json;
+using Avalonia.Controls;
 
 namespace TaiyouClient.ViewModels
 {
     public class GroupViewViewModel : ViewModelBase
     {
         public ObservableCollection<BasicChannelInfo> Channels { get; }
+
+        Control _currentContent;
+        public Control CurrentContent
+        {
+            get => _currentContent;
+            set => this.RaiseAndSetIfChanged(ref _currentContent, value);
+        }
 
         int _membersCount = 0;
         public int MembersCount

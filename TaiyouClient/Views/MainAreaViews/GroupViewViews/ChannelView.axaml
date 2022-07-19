@@ -44,19 +44,32 @@
 			<TextBlock Text="Ready" VerticalAlignment="Bottom" />
 		</StackPanel>
 
-		<ListBox Background="{DynamicResource Background_Transparent}">
-			<ListBoxItem>
-				<TextBlock Text="Cera" />
-			</ListBoxItem>
-			<ListBoxItem>
-				<TextBlock Text="Cera" />
-			</ListBoxItem>
-			<ListBoxItem>
-				<TextBlock Text="Cera" />
-			</ListBoxItem>
-			<ListBoxItem>
-				<TextBlock Text="Cera" />
-			</ListBoxItem>
+		<ListBox Background="{DynamicResource Background_Transparent}" Items="{Binding Messages}">
+			<ListBox.ItemTemplate>
+				<DataTemplate> 
+					<StackPanel Orientation="Horizontal" Spacing="4">
+						<Border Width="32" Height="32" Background="Gray" CornerRadius="24" />
+
+						<StackPanel>
+							<TextBlock Text="{Binding OwnerUsername}" FontSize="12" />
+							<TextBlock Text="{Binding Content}" FontSize="14" />
+						</StackPanel>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+
+			<ListBox.Styles>
+				<!-- Moves the items to the bottom -->
+				<Style Selector="ItemsPresenter#PART_ItemsPresenter">
+					<Setter Property="VerticalAlignment" Value="Bottom" />
+				</Style>
+
+				<Style Selector="ListBoxItem">
+					<Setter Property="Padding" Value="4" />
+					<Setter Property="Margin" Value="4" />
+					<Setter Property="CornerRadius" Value="4" />
+				</Style>
+			</ListBox.Styles>
 		</ListBox>
 
 		

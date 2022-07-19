@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace TaiyouClient.ViewModels
 {
     public class ChannelViewViewModel : ViewModelBase
     {
+        ObservableCollection<Message> Messages { get; }
+
         BasicChannelInfo _info = new BasicChannelInfo() {  Id="1234567890abcdef", Name= "Channel" };
         public BasicChannelInfo Info
         {
@@ -34,8 +37,18 @@ namespace TaiyouClient.ViewModels
         public void LoadChannel(BasicChannelInfo channel)
         {
             Info = channel;
+            Messages.Clear();
             Console.WriteLine($"Channel: {channel.Name}");
             Console.WriteLine($"    Id:{channel.Id}");
+
+
+        }
+
+        public ChannelViewViewModel()
+        {            
+            Messages = new();
+
+            Messages.Add(new Message() { Id = "abcdef0123456789", Content = "Caldo de Pilha", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
         }
     }
 }

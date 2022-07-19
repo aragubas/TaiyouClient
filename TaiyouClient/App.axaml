@@ -23,7 +23,8 @@
 		<SolidColorBrush x:Key="Foreground_Text_Normal" Color="#FF5A5A5A" />
 		<SolidColorBrush x:Key="Foreground_Text_Bright" Color="#FF212121" />
 		<SolidColorBrush x:Key="Foreground_Text_Brightest" Color="Black" />
-		
+
+		<SolidColorBrush x:Key="Background_Transparent" Color="#FFFFFFFF" />
 		<SolidColorBrush x:Key="Background_Separation" Color="#FFEEEEEE" />
 		<SolidColorBrush x:Key="Background_SeparationSlightly" Color="#FFF9F9F9" />
 		<SolidColorBrush x:Key="Background_Control_Disabled" Color="#FFEBEBEB" />

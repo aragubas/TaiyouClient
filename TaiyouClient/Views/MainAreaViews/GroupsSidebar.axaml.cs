@@ -20,8 +20,11 @@ namespace TaiyouClient.Views.MainAreaViews
 
             if (MainAreaViewModel.Instance != null && DataContext != null)
             {
-                GroupView groupView = new GroupView();
-                (groupView.DataContext as GroupViewViewModel).LoadGroup((DataContext as GroupsSidebarViewModel).Groups[index].Id);
+                string groupId = (DataContext as GroupsSidebarViewModel).Groups[index].Id;
+                GroupView groupView = new();
+
+                (groupView.DataContext as GroupViewViewModel).LoadGroup(groupId);
+
                 MainAreaViewModel.Instance.CurrentContent = groupView;
 
             }

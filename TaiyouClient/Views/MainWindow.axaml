@@ -22,6 +22,7 @@
 		<vm:MainWindowViewModel/>
 	</Window.DataContext>
 
+
 	<DockPanel>
 		<views:TopBar DockPanel.Dock="Top"></views:TopBar>
 		<ContentPresenter Content="{Binding CurrentContent}" />

@@ -13,7 +13,6 @@
 
 	<DockPanel>
 		<DockPanel Width="150" MaxWidth="150" DockPanel.Dock="Left" Background="{DynamicResource Background_SeparationSlightly}">
-
 			<StackPanel DockPanel.Dock="Top" Background="{DynamicResource Background_Separation}">
 				<ProgressBar CornerRadius="0" RenderTransformOrigin="0, 0" MinWidth="150" MinHeight="0" IsEnabled="{Binding IsLoading}" IsIndeterminate="True">
 					<ProgressBar.Transitions>
@@ -95,7 +94,7 @@
 			</ListBox>
 			
 		</DockPanel>
-		
+
 		<ContentPresenter Content="{Binding CurrentContent}" />
 	</DockPanel>
 	

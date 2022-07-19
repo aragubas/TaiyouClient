@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using TaiyouClient.ViewModels;
 
 namespace TaiyouClient.Views.MainAreaViews.GroupViewViews
 {

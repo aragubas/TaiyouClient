@@ -1,16 +1,17 @@
 using System;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using TaiyouClient.Models;
 using TaiyouClient.ViewModels;
+using TaiyouClient.Views.MainAreaViews.GroupViewViews;
 
 namespace TaiyouClient.Views.MainAreaViews
 {
     public partial class GroupView : UserControl
     {
-        int lastIndex = -1;
         public GroupView()
         {
             InitializeComponent();
@@ -19,19 +20,16 @@ namespace TaiyouClient.Views.MainAreaViews
         private void ChannelsListbox_SelectionChanged(object? sender, SelectionChangedEventArgs e)
         {
             int index = (sender as ListBox).SelectedIndex;
-            lastIndex = index;
 
             if (DataContext != null)
             {
-                //ChannelView channelView = new ChannelView();
-                string ChannelID = (DataContext as GroupViewViewModel).Channels[index].Id;
+                // Create the channel view
+                BasicChannelInfo channel = (DataContext as GroupViewViewModel).Channels[index];
+                ChannelView view = new ChannelView();
 
-                Console.WriteLine(ChannelID);
-                
-                
+                (view.DataContext as ChannelViewViewModel).LoadChannel(channel);
 
-                //(channelView.DataContext as ChannelViewViewModel).LoadGroup((DataContext as GroupsSidebarViewModel).Groups[index].Id);
-
+                (DataContext as GroupViewViewModel).CurrentContent = view;
             }
 
         }

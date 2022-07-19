@@ -8,6 +8,7 @@ using SocketIOClient;
 using TaiyouClient.Models.Request.Ws;
 using Newtonsoft.Json;
 using Avalonia.Controls;
+using TaiyouClient.Views.MainAreaViews.GroupViewViews;
 
 namespace TaiyouClient.ViewModels
 {
@@ -91,6 +92,8 @@ namespace TaiyouClient.ViewModels
             if (Channels == null)
             {
                 Channels = new ObservableCollection<BasicChannelInfo>();
+                Channels.Add(new BasicChannelInfo() { Name = "Unknown Channel", Id = "1234567890abcdef" });
+
 
                 //                //Adds test data in debug environment
                 //#if DEBUG

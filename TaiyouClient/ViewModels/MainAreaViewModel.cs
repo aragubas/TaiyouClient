@@ -15,13 +15,10 @@ namespace TaiyouClient.ViewModels
             set => this.RaiseAndSetIfChanged(ref _currentContent, value);
         }
 
-
-
         public MainAreaViewModel()
         {
             Instance = this;
             wsAPI.Connect();
-
         }
 
     }

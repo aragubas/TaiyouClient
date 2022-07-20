@@ -24,13 +24,6 @@ namespace TaiyouClient.ViewModels
             set => this.RaiseAndSetIfChanged(ref _info, value);
         }
 
-        string _ceira = "unchanged_name";
-        public string Ceira
-        {
-            get => _ceira;
-            set => this.RaiseAndSetIfChanged(ref _ceira, value);
-        }
-
         bool _isLoading = true;
         public bool IsLoading
         {
@@ -61,8 +54,6 @@ namespace TaiyouClient.ViewModels
         {
             Info = channel;
             Messages.Clear();
-            Console.WriteLine($"Channel: {channel.Name}");
-            Console.WriteLine($"    Id:{channel.Id}");
 
             if (wsAPI.client != null && wsAPI.client.Connected)
             {
@@ -75,8 +66,9 @@ namespace TaiyouClient.ViewModels
         {            
             Messages = new();
 
-            Messages.Add(new Message() { Id = "abcdef0123456789", Content = "Caldo de Pilha", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
-            Messages.Add(new Message() { Id = "abcdef0123456789", Content = "Caldo de Pilha", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
+            Messages.Add(new Message() { Id = "abcdef0123456789", Content = "Test", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
+            Messages.Add(new Message() { Id = "0123456789abcdef", Content = "Test 2", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
+            Messages.Add(new Message() { Id = "0123456789ghijkl", Content = "Test 3", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
         }
     }
 }

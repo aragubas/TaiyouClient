@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:vm="using:TaiyouClient.ViewModels"
+			 xmlns:svg="clr-namespace:Avalonia.Svg;assembly=Avalonia.Svg"
              mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
              x:Class="TaiyouClient.Views.MainAreaViews.GroupViewViews.ChannelView">
 
@@ -14,14 +15,15 @@
 		<StackPanel DockPanel.Dock="Top" Background="{DynamicResource Background_Separation}">
 			<ProgressBar Classes="autohideLoadingBar" MinHeight="0" IsEnabled="{Binding IsLoading}" />
 
-			<StackPanel Orientation="Horizontal" Margin="4">
+			<StackPanel Orientation="Horizontal" Margin="4" Spacing="4">
+				<svg:Svg Path="/Assets/channel.svg" />
 				<TextBlock Text="{Binding Info.Name}" />
 			</StackPanel>
 		</StackPanel>
 
 		<StackPanel DockPanel.Dock="Bottom" Margin="4">
 			<TextBox Name="MessageChannelTextBox" />
-			<TextBlock Text="Ready" />
+			<TextBlock Text="Ready" FontSize="11" Foreground="{DynamicResource Foreground_Text_Disabled}" />
 		</StackPanel>
 
 		<ListBox Background="{DynamicResource Background_Transparent}" Items="{Binding Messages}" SelectionMode="Toggle">
@@ -46,7 +48,7 @@
 
 				<Style Selector="ListBoxItem">
 					<Setter Property="Padding" Value="4" />
-					<Setter Property="Margin" Value="4" />
+					<Setter Property="Margin" Value="4, 2, 4, 2" />
 					<Setter Property="CornerRadius" Value="4" />
 				</Style>
 			</ListBox.Styles>

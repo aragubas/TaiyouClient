@@ -26,7 +26,6 @@ namespace TaiyouClient.ViewModels
 
             if (API.LoadStoredUser())
             {
-                wsAPI.Connect();
                 CurrentContent = new MainArea();
 
             }

@@ -76,6 +76,7 @@ namespace TaiyouClient.ViewModels
             Messages = new();
 
             Messages.Add(new Message() { Id = "abcdef0123456789", Content = "Caldo de Pilha", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
+            Messages.Add(new Message() { Id = "abcdef0123456789", Content = "Caldo de Pilha", Date = DateTime.Now, ChannelId = "abc123", OwnerUsername = "TestUser" });
         }
     }
 }

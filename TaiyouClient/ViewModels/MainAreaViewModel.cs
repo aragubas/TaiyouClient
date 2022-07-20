@@ -20,6 +20,8 @@ namespace TaiyouClient.ViewModels
         public MainAreaViewModel()
         {
             Instance = this;
+            wsAPI.Connect();
+
         }
 
     }

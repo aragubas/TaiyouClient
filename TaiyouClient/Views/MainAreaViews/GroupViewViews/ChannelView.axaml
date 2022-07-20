@@ -12,27 +12,7 @@
 
 	<DockPanel Background="{DynamicResource Background_Separation}">
 		<StackPanel DockPanel.Dock="Top" Background="{DynamicResource Background_Separation}">
-			<ProgressBar CornerRadius="0" RenderTransformOrigin="0, 0" MinWidth="150" MinHeight="0" IsEnabled="{Binding IsLoading}" IsIndeterminate="True">
-				<ProgressBar.Transitions>
-					<Transitions>
-						<DoubleTransition Property="Height" Easing="SineEaseIn" Duration="0:0:0.25"/>
-						<DoubleTransition Property="Opacity" Duration="0:0:10" />
-					</Transitions>
-				</ProgressBar.Transitions>
-
-				<ProgressBar.Styles>
-					<Style Selector="ProgressBar">
-						<Setter Property="Height" Value="0" />
-						<Setter Property="Opacity" Value="0" />
-					</Style>
-
-					<Style Selector="ProgressBar[IsEnabled=True]">
-						<Setter Property="Opacity" Value="1" />
-						<Setter Property="Height" Value="4" />
-					</Style>
-
-				</ProgressBar.Styles>
-			</ProgressBar>
+			<ProgressBar Classes="autohideLoadingBar" MinHeight="0" IsEnabled="{Binding IsLoading}" />
 
 			<StackPanel Orientation="Horizontal" Margin="4">
 				<TextBlock Text="{Binding Info.Name}" />
@@ -41,10 +21,10 @@
 
 		<StackPanel DockPanel.Dock="Bottom" Margin="4">
 			<TextBox Name="MessageChannelTextBox" />
-			<TextBlock Text="Ready" VerticalAlignment="Bottom" />
+			<TextBlock Text="Ready" />
 		</StackPanel>
 
-		<ListBox Background="{DynamicResource Background_Transparent}" Items="{Binding Messages}">
+		<ListBox Background="{DynamicResource Background_Transparent}" Items="{Binding Messages}" SelectionMode="Toggle">
 			<ListBox.ItemTemplate>
 				<DataTemplate> 
 					<StackPanel Orientation="Horizontal" Spacing="4">

@@ -14,7 +14,11 @@ namespace TaiyouClient
 
         public async static void Connect()
         {
-            if (client != null) { return; }
+            // TODO: Force connection retry
+            if (client != null)
+            { 
+                return; 
+            }
 
             SocketIOOptions options = new();
             options.ExtraHeaders = new Dictionary<string, string>();
